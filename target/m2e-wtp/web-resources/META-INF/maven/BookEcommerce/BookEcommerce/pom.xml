@@ -1,0 +1,145 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>BookEcommerce</groupId>
+	<artifactId>BookEcommerce</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<build>
+		<plugins>
+			<!-- Maven Compiler Plugin -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<release>21</release> <!-- This sets the Java version -->
+				</configuration>
+			</plugin>
+
+			<!-- Maven WAR Plugin -->
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version> <!-- Handles packaging the application
+				as a WAR -->
+			</plugin>
+
+			<!-- JAX-WS Maven Plugin for WSDL Code Generation -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<!-- Execution for Weather Forecast WSDL -->
+					<execution>
+						<id>numberConversion-wsimport</id>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<packageName>com.numberConversion.ws.client</packageName> <!--
+									Package for generated code -->
+							<sourceDestDir>src/main/java</sourceDestDir> <!--
+									Directory for generated Java files -->
+							<wsdlUrls>
+								<wsdlUrl>
+									https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL</wsdlUrl>
+							</wsdlUrls>
+							<keep>true</keep> <!-- Keeps the generated source
+							files -->
+						</configuration>
+					</execution>
+					<execution>
+						<id>calculator-wsimport</id>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<packageName>com.calculator.ws.client</packageName> <!--
+									Package for generated code -->
+							<sourceDestDir>src/main/java</sourceDestDir> <!--
+									Directory for generated Java files -->
+							<wsdlUrls>
+								<wsdlUrl>
+									http://www.dneonline.com/calculator.asmx?wsdl</wsdlUrl>
+							</wsdlUrls>
+							<keep>true</keep> <!-- Keeps the generated source
+							files -->
+						</configuration>
+					</execution>
+					<execution>
+						<id>isbnservice-wsimport</id>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<packageName>com.isbnservice.ws.client</packageName> <!--
+									Package for generated code -->
+							<sourceDestDir>src/main/java</sourceDestDir> <!--
+									Directory for generated Java files -->
+							<wsdlUrls>
+								<wsdlUrl>
+									https://webservices.daehosting.com/services/isbnservice.wso?WSDL</wsdlUrl>
+							</wsdlUrls>
+							<keep>true</keep> <!-- Keeps the generated source
+							files -->
+						</configuration>
+					</execution>
+					<execution>
+						<id>validate-wsimport</id>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<packageName>com.validate.ws.client</packageName> <!--
+									Package for generated code -->
+							<sourceDestDir>src/main/java</sourceDestDir> <!--
+									Directory for generated Java files -->
+							<wsdlUrls>
+								<wsdlUrl>
+									https://secure.ftipgw.com/ArgoFire/validate.asmx?WSDL</wsdlUrl>
+							</wsdlUrls>
+							<keep>true</keep> <!-- Keeps the generated source
+							files -->
+						</configuration>
+					</execution>
+
+					<!-- Execution for Country Info WSDL -->
+					<execution>
+						<id>countryinfo-wsimport</id>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<packageName>com.countryinfo.ws.client</packageName> <!--
+									Package for generated code -->
+							<sourceDestDir>src/main/java</sourceDestDir> <!--
+									Directory for generated Java files -->
+							<wsdlUrls>
+								<wsdlUrl>
+									http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL</wsdlUrl>
+
+							</wsdlUrls>
+							<keep>true</keep> <!-- Keeps the generated source
+							files -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-ri</artifactId>
+			<version>2.3.1</version>
+			<type>pom</type>
+		</dependency>
+	</dependencies>
+</project>
